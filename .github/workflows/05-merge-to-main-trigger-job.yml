@@ -6,6 +6,7 @@ on:
       - main
 jobs:
   train-experiment:
+    environment: development
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
@@ -20,6 +21,7 @@ jobs:
       run: |
         az ml job create --file src/job.yml --resource-group jaein.tak-rg --workspace-name mslearn-mlops
   train-prodcution:
+    environment: prouction
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
