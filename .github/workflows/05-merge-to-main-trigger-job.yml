@@ -1,7 +1,6 @@
 name: Trigger on Azure Machine Learning Job merge to main
 
-on:
-  workflow_dispatch:
+on: pull_request
 jobs:
   train-experiment:
     environment: development
