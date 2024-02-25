@@ -6,6 +6,7 @@ on:
       - main
 jobs:
   train-experiment:
+    environment: development
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
@@ -18,8 +19,10 @@ jobs:
         creds: ${{secrets.AZURE_CREDENTIALS}}
     - name: Trigger Azure Machine Learning job
       run: |
-        az ml job create --file src/job.yml --resource-group jaein.tak-rg --workspace-name mslearn-mlops
+        az ml job create --file src/job.yml --resource-group jaein.tak-rg --workspace-name mslearn-mlops --stream
   train-prodcution:
+    environment: production
+    needs: train-experiment
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
