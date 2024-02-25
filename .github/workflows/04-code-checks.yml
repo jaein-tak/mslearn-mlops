@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   job1:
-    name: linting
+    name: linting and unit tests
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
@@ -22,6 +22,9 @@ jobs:
     - name: Install Pytest
       run: |
         python -m pip install pytest
+    - name: Install mlflow
+      run: |
+        python -m pip install mlflow
     - name: Run unit tests
       run: | 
         python -m pytest tests
