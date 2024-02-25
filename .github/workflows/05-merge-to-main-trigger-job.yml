@@ -16,11 +16,10 @@ jobs:
         creds: ${{secrets.AZURE_CREDENTIALS}}
     - name: Trigger Azure Machine Learning job
       run: |
-        az ml job create --file src/job.yml --resource-group jaein.tak-rg --workspace-name mslearn-mlops
+        az ml job create --file src/job.yml --resource-group jaein.tak-rg --workspace-name mslearn-mlops --stream
   train-prodcution:
     environment: production
     needs: train-experiment
-    if: needs.train-experiment.outcome == 'success'
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
