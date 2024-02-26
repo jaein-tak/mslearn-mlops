@@ -15,6 +15,7 @@ jobs:
         python-version: '3.x'
     - name: Install dependencies
       run: |
+        pip install disutils
         pip install azure-cli
         az extension add -n azure-cli-ml
     - name: Login to Azure
