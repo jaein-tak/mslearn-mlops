@@ -27,4 +27,4 @@ jobs:
         az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     - name: Create Azure ML endpoint
       run: |
-        az ml online-endpoint create --name mslearn-mlops-njned --model model-prod=1
+        az ml online-endpoint create --name mslearn-mlops-njned -f src/endpoint.yml
