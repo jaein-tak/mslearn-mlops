@@ -17,7 +17,9 @@ jobs:
       run: |
         pip install setuptools
         pip install azure-cli
-        az extension add -n azure-cli-ml
+        az extension remove -n azure-cli-ml
+        az extension remove -n ml
+        az extension  add -n ml
     - name: Login to Azure
       uses: azure/login@v1
       with:
