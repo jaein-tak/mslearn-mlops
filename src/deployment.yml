@@ -1,6 +1,6 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
 name: model-prod-1
-endpoint_name: mslearn-mlops-dlbyi
+endpoint_name: mslearn-mlops-dbuax
 model: azureml:model-prod:1
-instance_type: Standard_D2as_v4
-instance_count: 1
+instance_type: Standard_DS1_v2
+instance_count: 3
