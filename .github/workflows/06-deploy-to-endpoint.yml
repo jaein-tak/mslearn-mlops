@@ -1,0 +1,33 @@
+name: Deploy Azure ML Endpoint
+
+on: [push]
+
+jobs:
+  deploy:
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        pip install setuptools
+        pip install azure-cli
+        az extension add -n ml
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Set Azure subscription
+      run: |
+        az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    - name: Create Azure ML endpoint
+      run: |
+        az ml online-endpoint create --file src/endpoint.yml --resource-group jaein.tak-rg --workspace-name mslearn-mlops
+    - name: Deploy model to Azure ML endpoint
+      run: |
+        az ml online-deployment create --file src/deployment.yml --resource-group jaein.tak-rg --workspace-name mslearn-mlops
