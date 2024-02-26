@@ -25,6 +25,6 @@ jobs:
     - name: Set Azure subscription
       run: |
         az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-    - name: Create Azure ML endpoint
+    - name: Deploy model to Azure ML endpoint
       run: |
-        az ml online-endpoint create --file src/endpoint.yml --resource-group jaein.tak-rg --workspace-name mslearn-mlops
+        az ml online-deployment create --name model-prod-1 --endpoint mslearn-mlops-jwhxi -f src/deployment.yml --all-traffic

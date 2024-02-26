@@ -1,0 +1,10 @@
+$schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
+name: model-prod-1
+endpoint_name: mslearn-mlops-jwhxi
+model:
+  name: model-prod
+  version: 1
+  path: mslearn-mlops/model
+  type: mlflow_model
+instance_type: Standard_D2as_v4
+instance_count: 1
