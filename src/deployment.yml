@@ -1,10 +1,6 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
 name: model-prod-1
-endpoint_name: mslearn-mlops-hyudq
-model:
-  name: model-prod
-  version: 1
-  path: azureml://locations/eastus2/workspaces/ced4731a-92e5-4da3-a74b-1810c05f7186/models/model-prod/versions/1
-  type: mlflow_model
-instance_type: Standard_D2as_v4
+endpoint_name: mslearn-mlops-cccwr
+model: azureml:model-prod:1
+instance_type: Standard_DS1_v2
 instance_count: 1
