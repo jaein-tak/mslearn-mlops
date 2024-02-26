@@ -30,8 +30,7 @@ def main(args):
 
     endpoint = ml_client.online_endpoints.get(name=online_endpoint_name)
     print(
-        f'Endpoint "{endpoint.name}" with provisioning state "
-        {endpoint.provisioning_state}" is retrieved'
+        f'Endpoint "{endpoint.name}" with provisioning state "{endpoint.provisioning_state}" is retrieved'
     )
 
 
